@@ -1,0 +1,39 @@
+@import 'colors.css';
+
+.numberField {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    margin: 8px;
+}
+
+.numberInputGroup {
+    margin-top: 8px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+    padding: 0;
+
+    border: 1px solid var(--grey-400);
+    border-radius: 4px;
+}
+
+.numberInput {
+    outline: none;
+    border: none;
+
+    width: 44px;
+    height: 20px;
+    font-family: 'Sofia Sans', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    /* identical to box height, or 143% */
+    display: flex;
+    text-align: center;
+
+    color: var(--common-black);
+}

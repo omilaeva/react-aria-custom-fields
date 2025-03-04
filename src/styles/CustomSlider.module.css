@@ -1,0 +1,72 @@
+.slider {
+    display: grid;
+    grid-template-areas:
+    "label output"
+    "track track";
+    grid-template-columns: 1fr auto;
+    max-width: 300px;
+    color: var(--grey-300);
+    margin: 16px;
+}
+
+.label {
+    grid-area: label;
+}
+
+.output {
+    grid-area: output;
+}
+
+.track {
+    grid-area: track;
+    position: relative;
+}
+
+.track::before {
+    content: '';
+    display: block;
+    position: absolute;
+    background-color: var(--primary-main);
+}
+
+.track::after {
+    background-color: var(--grey-300); /* Color for the track after the thumb */
+    right: 0;
+}
+
+.thumb {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--primary-main);
+    border: 2px solid var(--common-white);
+}
+
+.thumb[data-dragging] {
+    background: var(--primary-main);
+}
+
+.thumb[data-focus-visible] {
+    outline: 2px solid var(--primary-main);
+}
+
+.slider[data-orientation="horizontal"] {
+    flex-direction: column;
+    width: 300px;
+}
+
+.slider[data-orientation="horizontal"] .track {
+    height: 30px;
+    width: 100%;
+}
+
+.slider[data-orientation="horizontal"] .track::before {
+    height: 3px;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.slider[data-orientation="horizontal"] .thumb {
+    top: 50%;
+}

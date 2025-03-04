@@ -1,0 +1,121 @@
+@import 'colors.css';
+
+.button {
+    flex: 1;
+    block-size: fit-content;
+    font-family: "Sofia Sans", sans-serif;
+    font-weight: 500;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 2px; /* TODO replace with something else */
+    position: relative;
+    border-radius: 8px; /* TODO border radius is different for button and NumberField button */
+    gap: 8px;
+}
+
+/* Size Variants */
+.small {
+    padding: 4px 8px;
+    font-size: 14px;
+}
+
+.medium {
+    padding: 8px 16px;
+    font-size: 16px;
+}
+
+/* Variants */
+.contained {
+    border: none;
+}
+
+.outlined {
+    border: 1px solid;
+}
+
+/* Color Themes */
+.primary {
+    color: var(--common-white);
+    background-color: var(--primary-main);
+}
+
+.primary:hover,
+.primary:focus {
+    color: var(--common-white);
+    background: var(--primary-dark);
+    border-color: var(--primary-dark);
+}
+
+.primary.outlined {
+    color: var(--primary-main);
+    border-color: var(--primary-main);
+    background-color: var(--common-white);
+}
+
+.primary.outlined:hover,
+.primary.outlined:focus {
+    background: var(--primary-surface);
+    color: var(--primary-dark);
+    border-color: var(--primary-dark);
+}
+
+.secondary {
+    color: var(--common-black);
+    background: var(--grey-200);
+    border-color: var(--grey-200);
+}
+
+.secondary:hover,
+.secondary:focus {
+    color: var(--common-black);
+    background: var(--grey-300);
+    border-color: var(--grey-300);
+}
+
+.secondary:disabled {
+    color: var(--grey-500);
+    background: var(--grey-300);
+    border-color: var(--grey-300);
+}
+
+.secondary.outlined {
+    color: var(--common-black);
+    border-color: var(--grey-400);
+}
+
+.secondary.outlined:hover,
+.secondary.outlined:focus {
+    border-color: var(--grey-500);
+}
+
+/* Disabled State */
+.button:disabled {
+    cursor: not-allowed;
+    background-color: var(--grey-200);
+    border-color: var(--grey-200);
+    color: var(--grey-500);
+}
+
+/* Icon & Text Alignment */
+.icon {
+    display: flex;
+    width: 0.8em; /* Match text size */
+    height: 0.8em; /* Maintain aspect ratio */
+    flex-shrink: 0; /* Prevents shrinking */
+    fill: currentColor;
+}
+/* add */
+
+.buttonIcon {
+    width: 24px;
+    height: 24px;
+
+}
+
+
+
+.text {
+    display: inline-block;
+}
