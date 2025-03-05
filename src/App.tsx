@@ -14,7 +14,7 @@ function App() {
   const [size, setSize] = useState<number>(0);
 
   const handleChange = (newValue: number) => {
-    setSize(newValue);
+    setSize(newValue ? newValue : 0);
   }
 
   const handleOnClear = () => {
@@ -36,15 +36,15 @@ function App() {
   return (
     <form className={styles.testingForm}>
       <CustomTextInput label={"Name"}
-                       focused={false}
                        disabled={false}
                        value={name}
                        placeholder={"enter text"} onChange={handleOnNameChange}/>
       <div className={styles.rowContainer}>
         <CustomNumberInput minValue={minSize} maxValue={maxSize} label={"Size (GB)"}
-                           focused={true} disabled={false}
+                           disabled={false}
                            value={size} onChange={handleChange}/>
-        <CustomSlider value={size} minValue={minSize} maxValue={maxSize} onChange={handleChange}/>
+        <CustomSlider value={size} minValue={minSize} maxValue={maxSize}
+                      onChange={handleChange} aria-label={"Size (GB)"}/>
       </div>
       <div className={styles.rowContainer}>
         <CustomButton variant={"outlined"} disabled={!isChanged}

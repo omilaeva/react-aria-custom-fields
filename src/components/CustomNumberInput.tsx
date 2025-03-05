@@ -8,7 +8,6 @@ import {PlusIcon} from "./icons/PlusIcon.tsx";
 interface NumberInputProps extends NumberFieldProps {
   label: string;
   value: number;
-  focused: boolean;
   disabled: boolean;
   onChange: (newValue: number) => void;
 }

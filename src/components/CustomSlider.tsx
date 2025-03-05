@@ -6,6 +6,7 @@ import {
   SliderTrack,
 } from 'react-aria-components';
 import styles from '../styles/CustomSlider.module.css';
+import React from "react";
 
 interface CustomSliderProps extends SliderProps<number> {
   value: number;
