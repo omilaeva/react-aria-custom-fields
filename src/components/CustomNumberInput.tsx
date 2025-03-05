@@ -1,3 +1,4 @@
+import * as React from "react";
 import {Group, Input, Label, NumberField, NumberFieldProps} from "react-aria-components";
 import {CustomButton} from "./CustomButton.tsx";
 import styles from "../styles/CustomNumberInput.module.css";
@@ -20,12 +21,14 @@ export const CustomNumberInput: React.FC<NumberInputProps> = (props: NumberInput
         <CustomButton size={"small"}
                       color={"secondary"}
                       appearance={"compact"}
+                      disabled={props.minValue !== undefined && props.value <= props.minValue}
                       slot={"decrement"}
                       icon={<MinusIcon />} />
         <Input className={styles.numberInput}/>
         <CustomButton size={"small"}
                       color={"secondary"}
                       appearance={"compact"}
+                      disabled={props.maxValue !== undefined && props.value >= props.maxValue}
                       slot={"increment"}
                       icon={<PlusIcon />} />
       </Group>
