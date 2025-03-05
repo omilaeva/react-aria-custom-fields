@@ -1,7 +1,6 @@
 import {
   Label,
   Slider,
-  SliderOutput,
   SliderProps,
   SliderThumb,
   SliderTrack,
@@ -10,6 +9,8 @@ import styles from '../styles/CustomSlider.module.css';
 
 interface CustomSliderProps extends SliderProps<number> {
   value: number;
+  minValue: number;
+  maxValue: number;
   label?: string;
   ariaLabel?: string;
 }
@@ -17,10 +18,20 @@ interface CustomSliderProps extends SliderProps<number> {
 export const CustomSlider: React.FC<CustomSliderProps> = ( props: CustomSliderProps ) => {
   return (
     <Slider {...props} className={styles.slider}>
-      <Label aria-label={props.ariaLabel}>{props.label}</Label>
-      <SliderOutput />
+      <Label className={styles.label} aria-label={props.ariaLabel}>{props.label}</Label>
       <SliderTrack className={styles.track}>
-            <SliderThumb className={styles.thumb}/>
+        {({ state }) => (
+          <>
+            {/* track */}
+            <div className={styles.trackRemaining} />
+            {/* fill */}
+            <div
+              className={styles.trackFilled}
+              style={{ width: `${state.getThumbPercent(0) * 100}%` }}
+            />
+            <SliderThumb className={styles.thumb} />
+          </>
+        )}
       </SliderTrack>
     </Slider>
   );

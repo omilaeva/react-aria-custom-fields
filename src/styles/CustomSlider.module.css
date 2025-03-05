@@ -4,13 +4,18 @@
     "label output"
     "track track";
     grid-template-columns: 1fr auto;
-    max-width: 300px;
+    grid-template-rows: 1fr 1fr;
     color: var(--grey-300);
-    margin: 16px;
+    width: 162px;
+    padding-left: 16px;
+    /*padding: 16px;*/
+    margin: 8px;
 }
 
 .label {
     grid-area: label;
+    align-self: center;
+    color: var(--common-black);
 }
 
 .output {
@@ -20,19 +25,52 @@
 .track {
     grid-area: track;
     position: relative;
+    width: 162px;
 }
 
-.track::before {
-    content: '';
-    display: block;
+.trackFilled {
+    grid-area: track;
     position: absolute;
-    background-color: var(--primary-main);
+    height: 4px;
+    border-radius: 3px;
+    background: var(--primary-main); /* Left side of the track */
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    transition: width  ease-in-out;
 }
 
-.track::after {
-    background-color: var(--grey-300); /* Color for the track after the thumb */
+.trackRemaining {
+    grid-area: track;
+    position: absolute;
+    height: 4px;
+    border-radius: 3px;
+    background: var(--grey-300); /* Right side of the track */
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
     right: 0;
+    /*left: var(--filled-width);*/
 }
+
+/*.track::before {*/
+/*    content: '';*/
+/*    display: block;*/
+/*    position: absolute;*/
+/*    background-color: var(--primary-main);*/
+/*}*/
+
+
+/*.thumb {*/
+/*    position: absolute;*/
+/*    width: 16px;*/
+/*    height: 16px;*/
+/*    border-radius: 50%;*/
+/*    background: #4a7280;*/
+/*    border: 3px solid white;*/
+/*    top: 50%;*/
+/*    transform: translate(-50%, -50%);*/
+/*}*/
 
 .thumb {
     width: 16px;
@@ -40,6 +78,14 @@
     border-radius: 50%;
     background: var(--primary-main);
     border: 2px solid var(--common-white);
+    top: 50%;
+}
+
+.thumb:hover,
+.thumb:focus,
+.thumb:active {
+    background: var(--primary-main);
+    box-shadow: 0 0 0 7px rgb(75 122 138 / 20%);
 }
 
 .thumb[data-dragging] {
@@ -52,7 +98,7 @@
 
 .slider[data-orientation="horizontal"] {
     flex-direction: column;
-    width: 300px;
+    width: 162px;
 }
 
 .slider[data-orientation="horizontal"] .track {

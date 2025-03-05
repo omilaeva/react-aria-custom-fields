@@ -1,43 +1,60 @@
-// import {TextField, Label, Input} from 'react-aria-components';
-import {TextInputComponent} from "./components/TextInputComponent.tsx";
-import styles from "./App.module.css";
-import {ButtonComponent} from "./components/ButtonComponent.tsx";
-// import {FaPlus, FaTrash} from "react-icons/fa";
+import {CustomTextInput} from "./components/CustomTextInput.tsx";
+import styles from "./styles/App.module.css";
+import {CustomButton} from "./components/CustomButton.tsx";
 import {TrashIcon} from "./components/icons/TrashIcon.tsx";
-import {NumberInput} from "./components/NumberInput.tsx";
+import {CustomNumberInput} from "./components/CustomNumberInput.tsx";
 import {useState} from "react";
 import {CustomSlider} from "./components/CustomSlider.tsx";
-// import plusIcon from "./assets/plus.svg";
-// import minusIcon from "./assets/minus.svg";
-// import clearIcon from "./assets/clear.svg"
 
 function App() {
+  const minSize: number = 0;
+  const maxSize: number = 100;
+
+  const [name, setName] = useState<string>("");
   const [size, setSize] = useState<number>(0);
 
   const handleChange = (newValue: number) => {
     setSize(newValue);
   }
 
+  const handleOnClear = () => {
+    setSize(0);
+    setName("");
+  }
+
+  const handleOnSubmit = () => {
+    setSize(0);
+    setName("");
+    console.log("Submitted");
+  }
+
+  const handleOnNameChange = (value: string)=> {
+    setName(value);
+  }
+
+  const isChanged = name.length > 0 || size != 0;
   return (
     <form className={styles.testingForm}>
-      <TextInputComponent label={"Name"}
-                          focused={true}
-                          disabled={false}
-                          placeholder={"enter text"}/>
-      <div className={styles.buttonContainer}>
-        <NumberInput label={"Size (GB)"} focused={true} disabled={false}
-                     value={size} onChange={handleChange}/>
-        <CustomSlider value={size} minValue={0} maxValue={100} onChange={handleChange}/>
+      <CustomTextInput label={"Name"}
+                       focused={false}
+                       disabled={false}
+                       value={name}
+                       placeholder={"enter text"} onChange={handleOnNameChange}/>
+      <div className={styles.rowContainer}>
+        <CustomNumberInput minValue={minSize} maxValue={maxSize} label={"Size (GB)"}
+                           focused={true} disabled={false}
+                           value={size} onChange={handleChange}/>
+        <CustomSlider value={size} minValue={minSize} maxValue={maxSize} onChange={handleChange}/>
       </div>
-      <div className={styles.buttonContainer}>
-        <ButtonComponent size={"small"} variant={"outlined"} color={"primary"} disabled={false}
-                         onPress={() => console.log("Clear")} icon={<TrashIcon />}>
+      <div className={styles.rowContainer}>
+        <CustomButton variant={"outlined"} disabled={!isChanged}
+                      onPress={handleOnClear} icon={<TrashIcon />}>
           Clear
-        </ButtonComponent>
-        <ButtonComponent size={"small"} variant={"contained"} color={"primary"} disabled={false}
-                         onPress={() => console.log("Submit")}>
+        </CustomButton>
+        <CustomButton disabled={!isChanged}
+                      onPress={handleOnSubmit}>
           Submit
-        </ButtonComponent>
+        </CustomButton>
       </div>
     </form>
   )

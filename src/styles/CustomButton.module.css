@@ -1,21 +1,32 @@
 @import 'colors.css';
 
-.button {
-    flex: 1;
-    block-size: fit-content;
-    font-family: "Sofia Sans", sans-serif;
-    font-weight: 500;
+.compact {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
     align-items: center;
-    margin: 2px; /* TODO replace with something else */
+    justify-content: center;
     position: relative;
-    border-radius: 8px; /* TODO border radius is different for button and NumberField button */
-    gap: 8px;
+    border-radius: 2px;
+    font-size: 0.8rem;
+    margin: 2px;
+    padding: 0;
+    width: 24px;
+    height: 24px;
 }
 
-/* Size Variants */
+.regular {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Sofia Sans", sans-serif;
+    font-weight: 600;
+    position: relative;
+    border-radius: 8px;
+    gap: 8px;
+    block-size: fit-content;
+    margin: 8px;
+}
+
 .small {
     padding: 4px 8px;
     font-size: 14px;
@@ -26,16 +37,11 @@
     font-size: 16px;
 }
 
-/* Variants */
-.contained {
-    border: none;
-}
-
 .outlined {
     border: 1px solid;
+    background-color: transparent;
 }
 
-/* Color Themes */
 .primary {
     color: var(--common-white);
     background-color: var(--primary-main);
@@ -43,7 +49,6 @@
 
 .primary:hover,
 .primary:focus {
-    color: var(--common-white);
     background: var(--primary-dark);
     border-color: var(--primary-dark);
 }
@@ -69,14 +74,14 @@
 
 .secondary:hover,
 .secondary:focus {
-    color: var(--common-black);
     background: var(--grey-300);
     border-color: var(--grey-300);
 }
 
-.secondary:disabled {
+.primary.outlined:disabled,
+.secondary.outlined:disabled {
     color: var(--grey-500);
-    background: var(--grey-300);
+    background: var(--common-white);
     border-color: var(--grey-300);
 }
 
@@ -90,31 +95,20 @@
     border-color: var(--grey-500);
 }
 
-/* Disabled State */
-.button:disabled {
-    cursor: not-allowed;
+.regular:disabled,
+.compact:disabled {
     background-color: var(--grey-200);
     border-color: var(--grey-200);
     color: var(--grey-500);
 }
 
-/* Icon & Text Alignment */
 .icon {
     display: flex;
-    width: 0.8em; /* Match text size */
-    height: 0.8em; /* Maintain aspect ratio */
-    flex-shrink: 0; /* Prevents shrinking */
+    width: 0.8em;
+    height: 0.8em;
+    flex-shrink: 0;
     fill: currentColor;
 }
-/* add */
-
-.buttonIcon {
-    width: 24px;
-    height: 24px;
-
-}
-
-
 
 .text {
     display: inline-block;

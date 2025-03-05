@@ -1,0 +1,46 @@
+@import 'colors.css';
+
+.textField {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    margin: 8px;
+}
+
+.textInput {
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    padding: 8px 16px;
+    width: 178px;
+    height: 32px;
+    box-sizing: border-box;
+
+    background: var(--common-white);
+    border: 1px solid var(--grey-400);
+    border-radius: 8px;
+    color: var(--grey-800);
+    font-family: 'Sofia Sans', sans-serif;
+    font-size: 16px;
+    line-height: 16px;
+    outline: none;
+}
+
+.textInput:hover {
+    border-color: var(--grey-500);
+}
+
+.textInput:focus {
+    border: 2px solid var(--primary-main);
+    font-weight: bold;
+    caret-color: var(--common-black);
+    color: var(--grey-800);
+    font-size: 15px;
+    line-height: 20px;
+}
+
+.textInput:disabled {
+    background: var(--grey-50);
+    border-color: var(--grey-400);
+    color: var(--grey-400);
+}
