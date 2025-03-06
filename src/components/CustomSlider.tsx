@@ -23,11 +23,10 @@ export const CustomSlider: React.FC<CustomSliderProps> = ( props: CustomSliderPr
       <SliderTrack className={styles.track}>
         {({ state }) => (
           <>
-            {/* track */}
-            <div className={styles.trackRemaining} />
-            {/* fill */}
-            <div
-              className={styles.trackFilled}
+            {/* Set styles for the whole track */}
+            <div className={styles.trackMain} />
+            {/* Set styles for the part for tack before the thumb */}
+            <div className={styles.trackFilled}
               style={{ width: `${state.getThumbPercent(0) * 100}%` }}
             />
             <SliderThumb className={styles.thumb} />
