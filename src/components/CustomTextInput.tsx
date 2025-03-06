@@ -1,10 +1,9 @@
-import {Input, Label, TextField} from "react-aria-components";
+import {Input, Label, TextField, TextFieldProps} from "react-aria-components";
 import styles from "../styles/CustomTextInput.module.css";
 import React, {useState} from "react";
 
 
-interface TextInputComponentProps {
-  disabled: boolean;
+interface TextInputComponentProps extends TextFieldProps{
   label: string;
   value: string;
   placeholder?: string;
@@ -16,7 +15,7 @@ export const CustomTextInput : React.FC<TextInputComponentProps> =
   const [focused, setFocused] = useState(false);
 
   return (
-    <TextField className={`${styles.textField}`}>
+    <TextField {...props} className={`${styles.textField}`}>
     <Label>{props.label}</Label>
     <Input className={styles.textInput}
            onFocus={() => setFocused(true)}

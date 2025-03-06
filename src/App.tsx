@@ -6,26 +6,31 @@ import {CustomNumberInput} from "./components/CustomNumberInput.tsx";
 import {useState} from "react";
 import {CustomSlider} from "./components/CustomSlider.tsx";
 
-function App() {
-  const minSize: number = 0;
-  const maxSize: number = 100;
+const minSize: number = 0;
+const maxSize: number = 100;
 
+function App() {
   const [name, setName] = useState<string>("");
   const [size, setSize] = useState<number>(0);
 
-  const handleChange = (newValue: number) => {
-    setSize(newValue ? newValue : 0);
+  const handleSizeChange = (newValue: number) => {
+    setSize(!isNaN(newValue) ? newValue : 0);
+  }
+
+  const clearForm = () => {
+    setSize(0);
+    setName("");
   }
 
   const handleOnClear = () => {
-    setSize(0);
-    setName("");
+    clearForm();
   }
 
   const handleOnSubmit = () => {
-    setSize(0);
-    setName("");
-    console.log("Submitted");
+    alert(`Submitted:
+     Name: ${name}
+     Size (GB): ${size}`);
+    clearForm();
   }
 
   const handleOnNameChange = (value: string)=> {
@@ -36,22 +41,20 @@ function App() {
   return (
     <form className={styles.testingForm}>
       <CustomTextInput label={"Name"}
-                       disabled={false}
                        value={name}
                        placeholder={"enter text"} onChange={handleOnNameChange}/>
       <div className={styles.rowContainer}>
         <CustomNumberInput minValue={minSize} maxValue={maxSize} label={"Size (GB)"}
-                           disabled={false}
-                           value={size} onChange={handleChange}/>
+                           value={size} onChange={handleSizeChange}/>
         <CustomSlider value={size} minValue={minSize} maxValue={maxSize}
-                      onChange={handleChange} aria-label={"Size (GB)"}/>
+                      onChange={handleSizeChange} aria-label={"Size (GB)"}/>
       </div>
       <div className={styles.rowContainer}>
-        <CustomButton variant={"outlined"} disabled={!isChanged}
+        <CustomButton variant={"outlined"} isDisabled={!isChanged}
                       onPress={handleOnClear} icon={<TrashIcon />}>
           Clear
         </CustomButton>
-        <CustomButton disabled={!isChanged}
+        <CustomButton isDisabled={!isChanged}
                       onPress={handleOnSubmit}>
           Submit
         </CustomButton>

@@ -11,7 +11,6 @@ interface ButtonComponentProps extends ButtonProps {
   size?: ButtonSize;
   variant?: ButtonVariant;
   color?: ButtonColor;
-  disabled?: boolean;
   appearance?: ButtonAppearance;
   icon?: React.ReactElement;
   children?: React.ReactNode;
@@ -22,16 +21,14 @@ const defaultProps: ButtonComponentProps = {
   size: "medium",
   variant: "contained",
   color: "primary",
-  disabled: false,
   appearance: "regular",
 }
 
 export const CustomButton: React.FC<ButtonComponentProps> = (props: ButtonComponentProps) => {
-  const {size, variant, color, disabled, appearance, icon, children, onPress, slot} = {...defaultProps, ...props};
+  const {size, variant, color, appearance, icon, children, onPress, slot} = {...defaultProps, ...props};
 
   return (
     <Button {...props} onPress={onPress}
-            isDisabled={disabled}
             slot={slot}
             className={`${styles[appearance!]} ${styles[size!]} ${styles[variant!]} ${styles[color!]}`}>
       { icon && <span className={`${styles.icon}`}>{icon}</span> }

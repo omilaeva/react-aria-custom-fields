@@ -8,7 +8,6 @@ import {PlusIcon} from "./icons/PlusIcon.tsx";
 interface NumberInputProps extends NumberFieldProps {
   label: string;
   value: number;
-  disabled: boolean;
   onChange: (newValue: number) => void;
 }
 
@@ -20,14 +19,14 @@ export const CustomNumberInput: React.FC<NumberInputProps> = (props: NumberInput
         <CustomButton size={"small"}
                       color={"secondary"}
                       appearance={"compact"}
-                      disabled={props.minValue !== undefined && props.value <= props.minValue}
+                      isDisabled={props.minValue !== undefined && props.value <= props.minValue}
                       slot={"decrement"}
                       icon={<MinusIcon />} />
         <Input className={styles.numberInput}/>
         <CustomButton size={"small"}
                       color={"secondary"}
                       appearance={"compact"}
-                      disabled={props.maxValue !== undefined && props.value >= props.maxValue}
+                      isDisabled={props.maxValue !== undefined && props.value >= props.maxValue}
                       slot={"increment"}
                       icon={<PlusIcon />} />
       </Group>

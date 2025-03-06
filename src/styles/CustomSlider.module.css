@@ -40,7 +40,7 @@
     transition: width  ease-in-out;
 }
 
-.trackRemaining {
+.trackMain {
     grid-area: track;
     position: absolute;
     height: 4px;
